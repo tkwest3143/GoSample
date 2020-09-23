@@ -2,9 +2,15 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Sample App</title>
+    <title>Gin Application</title>
 </head>
 <body>
+<form method="post" action="/new">
     <h1>Hello World!!!</h1>
+	<textarea maxlength="10" id="text">
+	</textarea>
+	<input type="submit" value="Send">
+	   {{.text}}
+	</form>
 </body>
 </html>
