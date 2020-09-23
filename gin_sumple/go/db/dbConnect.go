@@ -1,13 +1,13 @@
-package main
+package db
 import (
   "github.com/jinzhu/gorm"
 
     _ "github.com/lib/pq"
 )
 
-func gormConnect() *gorm.DB {
+func GormConnect() *gorm.DB {
   DBMS     := "postgres"
-  USER     := "postgres"
+  USER     := "USER"
   PASS     := "password"
   PROTOCOL := "localhost:5432"
   DBNAME   := "GODB"
@@ -19,10 +19,4 @@ func gormConnect() *gorm.DB {
     panic(err.Error())
   }
   return db
-}
-
-func main(){
-  db := gormConnect()
-  
-  defer db.Close()
 }
