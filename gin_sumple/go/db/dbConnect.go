@@ -8,9 +8,9 @@ import (
 func gormConnect() *gorm.DB {
   DBMS     := "postgres"
   USER     := "postgres"
-  PASS     := "Aa13572468"
+  PASS     := "password"
   PROTOCOL := "localhost:5432"
-  DBNAME   := "TKDB"
+  DBNAME   := "GODB"
 
   CONNECT := DBMS+"://"+USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME+"?sslmode=disable"
   db,err := gorm.Open(DBMS, CONNECT)
