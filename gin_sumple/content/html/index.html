@@ -5,12 +5,12 @@
     <title>Gin Application</title>
 </head>
 <body>
-<form method="post" action="/new">
-    <h1>Hello World!!!</h1>
-	<textarea maxlength="10" id="text">
-	</textarea>
-	<input type="submit" value="Send">
-	   {{.text}}
+<form method="post" action="/login">
+    <h1>Login</h1>
+	ユーザーID：<input type="text" name="userId">
+	パスワード：<input type="password" name="password">
+	<input type="submit" value="ログイン">
+	{{.text}}
 	</form>
 </body>
 </html>
