@@ -7,3 +7,29 @@
 .chatList{
     border: 1px solid #000000;
 }
+
+.minePost{
+    margin: 0 0 0 auto; 
+}
+.minePost .contributer{
+    margin: 0 0 0 auto; 
+}
+.minePost .text{
+    margin: 0 0 0 auto; 
+}
+
+
+
+.post{
+    width: 50%;
+}
+
+.post .contributer{
+width: fit-content;
+}
+.post .text{
+    max-width: 70%;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+

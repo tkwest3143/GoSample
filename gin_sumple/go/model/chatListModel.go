@@ -1,0 +1,21 @@
+package model
+
+import (
+	"github/GoSumple/gin_sumple/go/data"
+	"github/GoSumple/gin_sumple/go/db"
+)
+
+//GetChatList userId,passwordをもとにusers情報を取得します。
+func GetChatList(roomId string) []data.ChatList {
+	d := db.GormConnect()
+
+	//チャット情報の取得
+	selData := []data.ChatList{}
+	d.Raw("select "+
+		"t1.chat_text,t2.user_id,t2.user_name as contributer,t1.bote_date,"+
+		"t1.room_id from chats t1 "+
+		"inner join users t2 on t1.contributer = t2.user_id "+
+		"where t1.room_id = ? ", roomId).Scan(&selData)
+	defer d.Close()
+	return selData
+}

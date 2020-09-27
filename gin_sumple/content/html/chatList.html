@@ -12,10 +12,17 @@
             <div class="chatList">
                 {{$i := .userId}}
                 {{range .chatList}}
-                    {{if eq  $i .Contributer}}
-                        <div style="text-align: right;">{{.Contributer}}：{{.ChatText}}<br></div>
+                    {{if eq  $i .UserId}}
+                        <div class="minePost post">
+                            
+                            <div class="contributer">{{.Contributer}}</div>
+                            <div class="text">{{.ChatText}}</div>
+                        </div><br>
                     {{else}}
-                        {{.Contributer}}：{{.ChatText}}<br>
+                        <div class="otherPost post">
+                            <div class="contributer">{{.Contributer}}</div>
+                            <div class="text">{{.ChatText}}</div><br>
+                        </div>
                     {{end}}
                 {{end}}
             </div>

@@ -11,9 +11,7 @@ import (
 
 //Index index.htmlのGET処理を実装します
 func Index(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "index.html", gin.H{
-		"text": "hello",
-	})
+	ctx.HTML(http.StatusOK, "index.html", gin.H{})
 }
 
 //Login index.htmlのPOST処理（/login）を実装します
