@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/style.css" />
     <title>Gin Application</title>
 </head>
 <body>
 <form method="post" action="/login">
+	<div class="main-content">
     <h1>Login</h1>
-	ユーザーID：<input type="text" name="userId">
+	ユーザーID：<input type="text" name="userId"><br>
 	パスワード：<input type="password" name="password">
 	<input type="submit" value="ログイン">
 	{{.text}}
+	</div>
 	</form>
 </body>
 </html>

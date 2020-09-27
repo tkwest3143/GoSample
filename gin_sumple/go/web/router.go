@@ -1,12 +1,25 @@
 package web
+
 import (
-    "github.com/gin-gonic/gin"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
+	"github.com/gin-gonic/gin"
 )
 
-func Router(){
-	r := gin.Default()
-	r.LoadHTMLGlob("content/html/*")
-	r.GET("/", Index) // 初期画面
-	r.POST("/login", Login) // 初期画面
-	r.Run(":8080")
+//Router 各画面のGET、POST処理を一覧で設定しています
+func Router(r *gin.Engine) {
+
+	store := cookie.NewStore([]byte("secret"))
+	r.Use(sessions.Sessions("mysession", store))
+
+	//index.htmlのGET、POST処理
+	r.GET("/", Index)
+	r.POST("/login", Login)
+
+	//loginError.html
+	r.POST("/returnLogin", ReturnLogin)
+
+	//chatList.html
+	r.GET("/chatList", ChatList)
+	r.POST("/chatPost", ChatPost)
 }

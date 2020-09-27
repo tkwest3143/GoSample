@@ -1,0 +1,9 @@
+.main-content{
+    width:60%;
+    margin-right:auto; 
+    margin-left: auto;
+}
+
+.chatList{
+    border: 1px solid #000000;
+}
