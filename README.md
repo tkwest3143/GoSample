@@ -20,4 +20,6 @@ Go言語のWebフレームわーであるGinフレームワークのためのフ
 	各画面の処理を記述
 
 ■github/GoSumple/gin_sumple/content
+
 	Webの画面処理をまとめ
+	
