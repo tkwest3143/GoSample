@@ -5,7 +5,7 @@ Go言語の練習用プロジェクト
 
 Go言語のWebフレームわーであるGinフレームワークのためのフォルダです。
 
-----パッケージ説明----
+----フォルダ説明----
 
 ■github/GoSumple/gin_sumple/go/db
 
@@ -17,5 +17,7 @@ Go言語のWebフレームわーであるGinフレームワークのためのフ
 	
 ■github/GoSumple/gin_sumple/go/model
 
-各画面の処理を記述
+	各画面の処理を記述
 
+■github/GoSumple/gin_sumple/content
+	Webの画面処理をまとめ
