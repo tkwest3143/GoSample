@@ -5,6 +5,14 @@ Go言語の練習用プロジェクト
 
 Go言語のWebフレームわーであるGinフレームワークのためのフォルダです。
 
+-------環境--------
+■DB
+・Postgresql
+■エディタ
+・vsCode
+■フレームワーク
+・gin
+・gorm
 ----フォルダ説明----
 
 ■github/GoSumple/gin_sumple/go/db
