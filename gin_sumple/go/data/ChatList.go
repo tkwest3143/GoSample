@@ -4,11 +4,11 @@ import (
 	"time"
 )
 
-//Chat Chatsテーブル情報
+//ChatList Chatsの画面表示用情報
 type ChatList struct {
-	ChatText    string
-	UserId      string
+	ChatText    string    //投稿文
+	UserID      string    //ユーザID
 	Contributer string    //投稿者
 	BoteDate    time.Time //投稿日
-	RoomId      string    //部屋ID
+	RoomID      string    //部屋ID
 }

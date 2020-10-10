@@ -1,8 +1,8 @@
-/*
- */
+// Package web チャット画面からのGET、POST処理を実装します
 package web
 
 import (
+	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github/GoSumple/gin_sumple/go/data"
@@ -16,12 +16,16 @@ import (
 func ChatList(ctx *gin.Context) {
 
 	session := sessions.Default(ctx)
-	userid := session.Get("UserId").(string)
-	chatList := model.GetChatList(userid)
+	roomid := session.Get("OpenRoomId").(string)
+	chatList := model.GetChatList(roomid)
 
+	username := session.Get("UserName").(string)
+	userId := session.Get("UserId").(string)
+	fmt.Println(userId)
 	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
 		"chatList": chatList,
-		"userId":   userid,
+		"userName": username,
+		"userId":   userId,
 	})
 }
 
@@ -30,11 +34,12 @@ func ChatPost(ctx *gin.Context) {
 	chattext, _ := ctx.GetPostForm("chatText")
 	session := sessions.Default(ctx)
 	userid := session.Get("UserId").(string)
+	roomid := session.Get("OpenRoomId").(string)
 	chat := data.Chat{}
 	chat.ChatText = chattext
 	chat.Contributer = userid
 	chat.BoteDate = time.Now()
-	chat.RoomId = "111"
+	chat.RoomID = roomid
 	db.ChatInsert(chat)
 
 	ctx.Redirect(http.StatusSeeOther, "/chatList")

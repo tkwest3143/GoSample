@@ -1,12 +1,17 @@
 package data
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+	"time"
+)
 
+//User usersテーブルエンティティ情報
 type User struct {
 	gorm.Model
-	UserId     string `gorm:"primary_key"`
-	UserName   string
-	Password   string
-	RegistDate string
-	LastLogin  string
+	UserID     string    `gorm:"primary_key"` //ユーザID
+	UserName   string    //ユーザ名
+	Password   string    //パスワード
+	OpenRoomID string    //最後に開いていたRoomID
+	RegistDate time.Time //登録日
+	LastLogin  time.Time //最終ログイン日
 }

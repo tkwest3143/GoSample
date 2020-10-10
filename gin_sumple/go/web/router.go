@@ -14,7 +14,14 @@ func Router(r *gin.Engine) {
 
 	//index.htmlのGET、POST処理
 	r.GET("/", Index)
-	r.POST("/login", Login)
+
+	//login.html
+	r.GET("/login", Login)
+	r.POST("/doLogin", DoLogin)
+
+	//regist.html
+	r.GET("/regist", Regist)
+	r.POST("/doRegist", DoRegist)
 
 	//loginError.html
 	r.POST("/returnLogin", ReturnLogin)

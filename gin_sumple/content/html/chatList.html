@@ -12,15 +12,20 @@
             <div class="chatList">
                 {{$i := .userId}}
                 {{range .chatList}}
-                    {{if eq  $i .UserId}}
+                    {{if eq  $i .UserID}}
+                        <!-- 自分が投稿したチャットの内容-->
                         <div class="minePost post">
-                            
+                            <!--投稿者-->
                             <div class="contributer">{{.Contributer}}</div>
+                            <!--投稿文-->
                             <div class="text">{{.ChatText}}</div>
                         </div><br>
                     {{else}}
+                       <!-- 自分以外が投稿したチャットの内容-->
                         <div class="otherPost post">
+                            <!--投稿者-->
                             <div class="contributer">{{.Contributer}}</div>
+                            <!--投稿文-->
                             <div class="text">{{.ChatText}}</div><br>
                         </div>
                     {{end}}
