@@ -2,7 +2,6 @@
 package web
 
 import (
-	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github/GoSumple/gin_sumple/go/data"
@@ -20,12 +19,13 @@ func ChatList(ctx *gin.Context) {
 	chatList := model.GetChatList(roomid)
 
 	username := session.Get("UserName").(string)
-	userId := session.Get("UserId").(string)
-	fmt.Println(userId)
+	userID := session.Get("UserId").(string)
+	roomName := chatList[0].RoomName
 	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
 		"chatList": chatList,
 		"userName": username,
-		"userId":   userId,
+		"userId":   userID,
+		"roomName": roomName,
 	})
 }
 
