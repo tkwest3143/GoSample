@@ -21,6 +21,7 @@ func Regist(ctx *gin.Context) {
 func DoRegist(ctx *gin.Context) {
 	username, _ := ctx.GetPostForm("userName")
 	password, _ := ctx.GetPostForm("password")
+	marilAddress, _ := ctx.GetPostForm("marilAddress")
 
 	registuser := db.UserSelectByUserName(username)
 	if registuser.UserID == "" {
@@ -29,6 +30,7 @@ func DoRegist(ctx *gin.Context) {
 		userinfo.UserID = userid
 		userinfo.UserName = username
 		userinfo.Password = common.DoCrypt(password)
+		userinfo.MailAddress = marilAddress
 		userinfo.OpenRoomID = userid
 		userinfo.RegistDate = time.Now()
 		userinfo.LastLogin = time.Now()
