@@ -20,7 +20,11 @@ func ChatList(ctx *gin.Context) {
 
 	username := session.Get("UserName").(string)
 	userID := session.Get("UserId").(string)
-	roomName := chatList[0].RoomName
+	roomName := ""
+	if len(chatList) != 0 {
+		roomName = chatList[0].RoomName
+	}
+
 	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
 		"chatList": chatList,
 		"userName": username,
@@ -43,4 +47,15 @@ func ChatPost(ctx *gin.Context) {
 	db.ChatInsert(chat)
 
 	ctx.Redirect(http.StatusSeeOther, "/chatList")
+}
+
+//DoRoomCreate ルームを作成する処理を実装します。
+func DoRoomCreate(ctx *gin.Context) {
+	//TODO ルーム作成ボタンを押下した際にルームを作成する処理を実装
+
+}
+
+//RoomCreate 部屋を作成する画面の初期処理を実装
+func RoomCreate(ctx *gin.Context) {
+	//TODO フレンドリストを取得し、画面へ渡す処理を実装
 }

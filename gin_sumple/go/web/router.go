@@ -29,4 +29,7 @@ func Router(r *gin.Engine) {
 	//chatList.html
 	r.GET("/chatList", ChatList)
 	r.POST("/chatPost", ChatPost)
+
+	//room.html
+	r.GET("/roomCreate", ChatPost)
 }

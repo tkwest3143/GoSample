@@ -10,6 +10,7 @@ func main() {
 	r.LoadHTMLGlob("content/html/*")
 
 	r.Static("/css", "./content/css/")
+	r.Static("/js", "./content/js/")
 
 	web.Router(r)
 
