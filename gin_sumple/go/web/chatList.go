@@ -52,6 +52,17 @@ func ChatPost(ctx *gin.Context) {
 //DoRoomCreate ルームを作成する処理を実装します。
 func DoRoomCreate(ctx *gin.Context) {
 	//TODO ルーム作成ボタンを押下した際にルームを作成する処理を実装
+	room := data.Room{}
+	room.RoomName, _ = ctx.GetPostForm("roomName")
+	room.Discription, _ = ctx.GetPostForm("discription")
+	session := sessions.Default(ctx)
+	Administrator := session.Get("UserId").(string)
+	roomUserRelation := data.RoomUserRelation{}
+	roomUserRelation.UserID = Administrator
+	roomUserRelation.RoomID = room.RoomID
+	roomUserRelation.AuthorityCd = '1'
+	db.RoomInsert(room)
+	db.RoomUserRelationInsert(roomUserRelation)
 
 }
 

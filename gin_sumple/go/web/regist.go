@@ -40,9 +40,11 @@ func DoRegist(ctx *gin.Context) {
 		roominfo := data.Room{}
 		roominfo.RoomName = username
 		roominfo.RoomID = userinfo.OpenRoomID
-		roominfo.Administrator = userid
-		roominfo.CreateDate = time.Now()
 		db.RoomInsert(roominfo)
+		roomUserRelation := data.RoomUserRelation{}
+		roomUserRelation.RoomID = db.GetMaxRoomID()
+		roomUserRelation.UserID = userid
+		roomUserRelation.AuthorityCd = '1'
 		session := sessions.Default(ctx)
 		session.Set("UserId", userinfo.UserID)
 		session.Set("UserName", userinfo.UserName)

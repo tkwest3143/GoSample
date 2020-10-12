@@ -17,7 +17,6 @@ func ChatDBInit() {
 
 //ChatInsert users情報を挿入します
 func ChatInsert(insData data.Chat) {
-	ChatDBInit()
 	d := GormConnect()
 	d.Create(&insData)
 	defer d.Close()
@@ -25,7 +24,6 @@ func ChatInsert(insData data.Chat) {
 
 //ChatSelect userId,passwordをもとにusers情報を取得します。
 func ChatSelect(roomId string) []data.Chat {
-	ChatDBInit()
 	d := GormConnect()
 	selData := []data.Chat{}
 	d.Find(&selData, "room_id = ?", roomId)
