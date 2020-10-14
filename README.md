@@ -40,6 +40,6 @@ Go言語のWebフレームワークであるGinフレームワークのための
 - github/GoSumple/gin_sumple/content
   - Webの画面処理をまとめ
 	
-##【参照】
+## 【参照】
 - goについて書いた記事
   - https://nbaboston.net/category/go
