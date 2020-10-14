@@ -1,6 +1,12 @@
 # GoSumple
 Go言語の練習用プロジェクト
 
+##このプロジェクトを実行するには下記の配下に配置してください。
+{Goインストールフォルダ}/src/github/
+
+Goのインストールは、Go公式のWebサイトまたはこちらを参考にしてください
+https://nbaboston.net/1405.html
+
 ## 【gin_sumple】
 
 Go言語のWebフレームワークであるGinフレームワークのためのフォルダです。
@@ -33,3 +39,6 @@ Go言語のWebフレームワークであるGinフレームワークのための
 - github/GoSumple/gin_sumple/content
   - Webの画面処理をまとめ
 	
+##【参照】
+- goについて書いた記事
+  - https://nbaboston.net/category/go
