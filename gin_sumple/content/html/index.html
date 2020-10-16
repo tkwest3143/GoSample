@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/css/style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Gin Application</title>
-</head>
-<script>
-	function btnLoginClick(){
-		form1=document.getElementById("form");
-		form1.action = "/login";
-		form1.submit;
-	}
+  </head>
+  <script>
+    function btnLoginClick() {
+      form1 = document.getElementById("form");
+      form1.action = "/login";
+      form1.submit;
+    }
 
-	function btnRegistClick(){
-		form1=document.getElementById("form");
-		form1.action = "/regist";
-		form1.submit;
-	}
-</script>
-<body>
-<form method="get" action="" id="form">
-	<div class="main-content">
-	<input type="submit" value="ログイン画面へ"onclick="javascript:btnLoginClick()"><br>
-	<input type="submit" value="登録画面へ" onclick="javascript:btnRegistClick()">
-	</div>
-	</form>
-</body>
+    function btnRegistClick() {
+      form1 = document.getElementById("form");
+      form1.action = "/regist";
+      form1.submit;
+    }
+  </script>
+  <body>
+    <form method="get" action="" id="form">
+      <div class="main-content">
+        <input
+          type="submit"
+          value="ログイン画面へ"
+          onclick="javascript:btnLoginClick()"
+        /><br />
+        <input
+          type="submit"
+          value="登録画面へ"
+          onclick="javascript:btnRegistClick()"
+        />
+      </div>
+    </form>
+  </body>
 </html>
