@@ -3,7 +3,6 @@ package db
 import (
 	"fmt"
 	"github/GoSumple/gin_sumple/go/data"
-	"strconv"
 )
 
 //UserInsert users情報を挿入します
@@ -36,7 +35,7 @@ func GetMaxUsersID() string {
 	d := GormConnect()
 	maxNo := 0
 	d.Table("users").Count(&maxNo)
-	newUserID := "UI" + fmt.Sprintf("%08d", strconv.Itoa(maxNo+1))
+	newUserID := "UI" + fmt.Sprintf("%08d", maxNo+1)
 	defer d.Close()
 	return newUserID
 }

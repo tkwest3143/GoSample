@@ -17,10 +17,9 @@ func UserRelationExist(userID string) bool {
 	selData := data.UserRelation{}
 	d.First(&selData, "user_id1=? or user_id2 = ?", userID, userID)
 	defer d.Close()
-	if selData.UserID1 != "" {
-		return true
-	} else {
+	if selData.UserID1 == "" {
 		return false
 	}
+	return true
 
 }

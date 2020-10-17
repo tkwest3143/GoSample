@@ -23,10 +23,10 @@ func ChatInsert(insData data.Chat) {
 }
 
 //ChatSelect userId,passwordをもとにusers情報を取得します。
-func ChatSelect(roomId string) []data.Chat {
+func ChatSelect(roomID string) []data.Chat {
 	d := GormConnect()
 	selData := []data.Chat{}
-	d.Find(&selData, "room_id = ?", roomId)
+	d.Find(&selData, "room_id = ?", roomID)
 	defer d.Close()
 	return selData
 }

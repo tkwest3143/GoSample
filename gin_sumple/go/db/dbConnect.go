@@ -2,16 +2,20 @@ package db
 
 import (
 	"github.com/jinzhu/gorm"
+	// PostgreSQL driver
 	_ "github.com/lib/pq"
+	"github/GoSumple/gin_sumple/go/common"
 )
 
 //GormConnect DBへの接続を行います
 func GormConnect() *gorm.DB {
-	DBMS := "postgres"
-	USER := "USER"
-	PASS := "password"
-	PROTOCOL := "localhost:5432"
-	DBNAME := "GODB"
+	appData := common.GetApplicationProperty()
+
+	DBMS := appData.DbConfig.Dbms
+	USER := appData.DbConfig.User
+	PASS := appData.DbConfig.Password
+	PROTOCOL := appData.DbConfig.Protocol
+	DBNAME := appData.DbConfig.Dbname
 
 	CONNECT := DBMS + "://" + USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?sslmode=disable"
 	db, err := gorm.Open(DBMS, CONNECT)
