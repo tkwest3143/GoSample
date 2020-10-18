@@ -13,7 +13,7 @@ func GetApplicationProperty() data.AppData {
 
 	raw, err := ioutil.ReadFile("resource/application.json")
 	if err != nil {
-		fmt.Println("ファイルが読み込めませんでした")
+		fmt.Println("プロパティファイルが読み込めませんでした")
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
