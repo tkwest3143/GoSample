@@ -12,11 +12,11 @@ func UserInsert(insData data.User) {
 	defer d.Close()
 }
 
-//UserSelect userId,passwordをもとにusers情報を取得します。
-func UserSelect(userName string, password string) data.User {
+//UserSelect userIDをもとにusers情報を取得します。
+func UserSelect(userID string) data.User {
 	d := GormConnect()
 	selData := data.User{}
-	d.First(&selData, "user_name=? and password = ?", userName, password)
+	d.First(&selData, "user_id=?", userID)
 	defer d.Close()
 	return selData
 }

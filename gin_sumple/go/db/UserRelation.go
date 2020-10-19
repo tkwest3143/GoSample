@@ -11,15 +11,19 @@ func UserRelationInsert(insData data.UserRelation) {
 	defer d.Close()
 }
 
-//UserRelationExist 引数に指定されたユーザが存在するかどうかを判定します.
-func UserRelationExist(userID string) bool {
+//GetFriendList 引数に指定されたユーザがをもとにフレンドリストを取得します。
+func GetFriendList(userID string) []string {
 	d := GormConnect()
-	selData := data.UserRelation{}
-	d.First(&selData, "user_id1=? or user_id2 = ?", userID, userID)
+	selData := []data.UserRelation{}
+	d.Find(&selData, "user_id1=? or user_id2 = ?", userID, userID)
 	defer d.Close()
-	if selData.UserID1 == "" {
-		return false
+	friendList := []string{}
+	for _, b := range selData {
+		if userID != b.UserID1 {
+			friendList = append(friendList, b.UserID1)
+		} else {
+			friendList = append(friendList, b.UserID2)
+		}
 	}
-	return true
-
+	return friendList
 }

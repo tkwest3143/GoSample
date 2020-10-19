@@ -29,6 +29,6 @@ func Router(r *gin.Engine) {
 	//chatList.html
 	r.GET("/chatList", ChatList)
 	r.POST("/chatPost", ChatPost)
-	r.GET("/roomCreate", DoRoomCreate)
+	r.POST("/doRoomCreate", DoRoomCreate)
 
 }

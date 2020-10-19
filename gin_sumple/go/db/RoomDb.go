@@ -12,6 +12,17 @@ func RoomInsert(insData data.Room) {
 	defer d.Close()
 }
 
+//RoomSelect roomIDをもとにrooms情報を取得します。
+func RoomSelect(roomID string) data.Room {
+	d := GormConnect()
+	selData := data.Room{}
+	fmt.Println(roomID)
+	d.Find(&selData, "room_id=?", roomID)
+	fmt.Println(selData)
+	defer d.Close()
+	return selData
+}
+
 //GetMaxRoomID IDの最大値を取得します。
 func GetMaxRoomID() string {
 	d := GormConnect()
