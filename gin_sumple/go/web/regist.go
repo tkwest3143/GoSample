@@ -1,5 +1,4 @@
-/*
- */
+// Package web WebアプリのGet、Post処理をまとめたパッケージ
 package web
 
 import (

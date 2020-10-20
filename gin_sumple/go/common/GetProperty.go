@@ -19,7 +19,7 @@ func GetApplicationProperty() data.AppData {
 	}
 
 	var appData data.AppData
-
+	//読み込んだjsonファイルをデータに埋め込む
 	json.Unmarshal(raw, &appData)
 
 	return appData

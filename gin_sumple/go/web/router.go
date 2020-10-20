@@ -15,18 +15,18 @@ func Router(r *gin.Engine) {
 	//index.htmlのGET、POST処理
 	r.GET("/", Index)
 
-	//login.html
+	//login.htmlのGET、POST処理
 	r.GET("/login", Login)
 	r.POST("/doLogin", DoLogin)
 
-	//regist.html
+	//regist.htmlのGET、POST処理
 	r.GET("/regist", Regist)
 	r.POST("/doRegist", DoRegist)
 
-	//loginError.html
+	//loginError.htmlのGET、POST処理
 	r.POST("/returnLogin", ReturnLogin)
 
-	//chatList.html
+	//chatList.htmlのGET、POST処理
 	r.GET("/chatList", ChatList)
 	r.POST("/chatPost", ChatPost)
 	r.POST("/doRoomCreate", DoRoomCreate)

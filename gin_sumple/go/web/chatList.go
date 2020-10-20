@@ -1,4 +1,4 @@
-// Package web チャット画面からのGET、POST処理を実装します
+// Package web WebアプリのGet、Post処理をまとめたパッケージ
 package web
 
 import (

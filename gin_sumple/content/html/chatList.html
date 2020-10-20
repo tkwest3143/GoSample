@@ -67,7 +67,7 @@
                 placeholder="何をするスペースですか？"
               ></textarea>
               <label for="">招待する</label>
-              <!--TODO友達一覧を表示して選択-->
+              <!--友達一覧を表示して選択-->
               <div>
                 {{range .friendList}}
                 <input
@@ -79,7 +79,7 @@
                 <br />
                 {{end}}
               </div>
-              <input type="button" id="btnRoomCreate" value="作成" />
+              <button id="btnRoomCreate">作成</button>
             </div>
             <div id="closeModal" class="closeModal">×</div>
           </div>
