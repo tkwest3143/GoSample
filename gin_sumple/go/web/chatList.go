@@ -2,7 +2,6 @@
 package web
 
 import (
-	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github/GoSumple/gin_sumple/go/data"
@@ -30,7 +29,6 @@ func ChatList(ctx *gin.Context) {
 	for _, friend := range friendIDList {
 		friendList = append(friendList, db.UserSelect(friend))
 	}
-	fmt.Println(roomID + "//" + roomInfo.RoomName)
 	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
 		"chatList":   chatList,
 		"userName":   username,

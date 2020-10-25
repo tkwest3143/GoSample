@@ -2,10 +2,8 @@
 package web
 
 import (
-	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github/GoSumple/gin_sumple/go/common"
 	"github/GoSumple/gin_sumple/go/db"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
@@ -22,7 +20,6 @@ func DoLogin(ctx *gin.Context) {
 	password, _ := ctx.GetPostForm("password")
 
 	userinfo := db.UserSelectByUserName(username)
-	fmt.Println(common.DoCrypt(password))
 	err := bcrypt.CompareHashAndPassword([]byte(userinfo.Password), []byte(password))
 	if err == nil {
 		session := sessions.Default(ctx)
