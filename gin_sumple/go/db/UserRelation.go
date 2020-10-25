@@ -1,8 +1,15 @@
 package db
 
 import (
+	"github.com/jinzhu/gorm"
 	"github/GoSumple/gin_sumple/go/data"
 )
+//UserRelationDBInit UserRelationsテーブルの初期化を行います
+func UserRelationDBInit(d *gorm.DB) {
+	if !d.HasTable(&data.UserRelation{}) {
+		d.CreateTable(&data.UserRelation{})
+	}
+}
 
 //UserRelationInsert userRelations情報を挿入します
 func UserRelationInsert(insData data.UserRelation) {

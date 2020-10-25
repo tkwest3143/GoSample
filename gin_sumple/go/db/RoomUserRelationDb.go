@@ -1,9 +1,16 @@
 package db
 
 import (
+	"github.com/jinzhu/gorm"
 	"github/GoSumple/gin_sumple/go/data"
 )
 
+//RoomUserRelationDBInit roomUserRelationsテーブルの初期化を行います
+func RoomUserRelationDBInit(d *gorm.DB) {
+	if !d.HasTable(&data.RoomUserRelation{}) {
+		d.CreateTable(&data.RoomUserRelation{})
+	}
+}
 //RoomUserRelationInsert RoomUserRelations情報を挿入します
 func RoomUserRelationInsert(insData data.RoomUserRelation) {
 	d := GormConnect()

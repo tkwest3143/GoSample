@@ -9,7 +9,9 @@
   <body>
     <form method="post" action="/chatPost" id="form">
       <div class="main-content">
-        <h1>{{.roomName}}</h1>
+        <h1 id="hdrRoom" style="text-align: center">
+          <button id="btnRoomName">{{.roomName}}</button>
+        </h1>
         <div class="chatList">
           {{$i := .userId}} {{range .chatList}} {{if eq $i .UserID}}
           <!-- 自分が投稿したチャットの内容-->

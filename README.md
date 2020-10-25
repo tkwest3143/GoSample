@@ -38,6 +38,9 @@ Go言語のWebフレームワークであるGinフレームワークのための
   
   　主に単一テーブルの操作を実装
 
+  - ※/main/DBCreate.goはDB作成用Goファイルです。
+  - gin_sumple\bat\DBCreate.batを実行することでDBが作成されます。
+
 - github/GoSumple/gin_sumple/go/web
   - Webアプリでの各画面のGET、POST処理を実装するパッケージ
 	

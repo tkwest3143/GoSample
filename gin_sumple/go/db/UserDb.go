@@ -1,10 +1,17 @@
 package db
 
 import (
+	"github.com/jinzhu/gorm"
 	"fmt"
 	"github/GoSumple/gin_sumple/go/data"
 )
 
+//UserDBInit Usersテーブルの初期化を行います
+func UserDBInit(d *gorm.DB) {
+	if !d.HasTable(&data.User{}) {
+		d.CreateTable(&data.User{})
+	}
+}
 //UserInsert users情報を挿入します
 func UserInsert(insData data.User) {
 	d := GormConnect()
