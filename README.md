@@ -49,6 +49,9 @@ Go言語のWebフレームワークであるGinフレームワークのための
 
 - github/GoSumple/gin_sumple/content
   - Webの画面処理をまとめ
+
+<h3>----実行方法----</h3>
+- bat/AppStart.batを実行でアプリケーションが起動できます。
 	
 <h2>【参照】</h2>
 
