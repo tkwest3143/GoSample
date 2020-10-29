@@ -2,14 +2,15 @@
 package web
 
 import (
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-gonic/gin"
 	"github/GoSumple/gin_sumple/go/data"
 	"github/GoSumple/gin_sumple/go/db"
 	"github/GoSumple/gin_sumple/go/model"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
 )
 
 //ChatList chatList.htmlのGET処理を実装します
@@ -72,6 +73,7 @@ func DoRoomCreate(ctx *gin.Context) {
 	db.RoomUserRelationInsert(roomUserRelation)
 	//ルームに所属するユーザの登録
 	selectFriendList, _ := ctx.GetPostForm("selectFriendList")
+	//選択されたフレンドをカンマで区切り配列に格納
 	sliceFriendList := strings.Split(selectFriendList, ",")
 
 	for _, friend := range sliceFriendList {
