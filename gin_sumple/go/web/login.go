@@ -4,9 +4,10 @@ package web
 import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github/GoSumple/gin_sumple/go/db"
+	"github/GoSumple/gin_sumple/go/model"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
+	"fmt"
 )
 
 //Login login.htmlのGET処理を実装します
@@ -19,17 +20,44 @@ func DoLogin(ctx *gin.Context) {
 	username, _ := ctx.GetPostForm("userName")
 	password, _ := ctx.GetPostForm("password")
 
-	userinfo := db.UserSelectByUserName(username)
+	userinfo := model.DoAuthentication(username,password)
+
+	if userinfo.UserName != "" {
+		session := sessions.Default(ctx)
+		session.Set("UserId", userinfo.UserID)
+		session.Set("UserName", userinfo.UserName)
+		session.Save()
+		ctx.Redirect(http.StatusSeeOther, "/chatList")
+	} else {
+		ctx.HTML(http.StatusOK, "error.html", gin.H{})
+	}
+}
+
+//GetLogin /getLoginのGET処理を実装します
+func GetLogin(ctx *gin.Context) {
+    username := ctx.Query("username")
+	password := ctx.Query("password")
+fmt.Println(username)
+fmt.Println(password)
+	userinfo := model.DoAuthentication(username,password)
+	
 	err := bcrypt.CompareHashAndPassword([]byte(userinfo.Password), []byte(password))
+	ctx.Writer.Header().Set("Content-Type", "application/json")
+        ctx.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+        ctx.Writer.Header().Set("Access-Control-Max-Age", "86400")
+        ctx.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE")
+        ctx.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, X-Max")
+        ctx.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 	if err == nil {
 		session := sessions.Default(ctx)
 		session.Set("UserId", userinfo.UserID)
 		session.Set("UserName", userinfo.UserName)
 		session.Save()
-
-		ctx.Redirect(http.StatusSeeOther, "/chatList")
+		 
+		ctx.JSON(http.StatusOK,userinfo)
 	} else {
-		ctx.HTML(http.StatusOK, "error.html", gin.H{})
+		ctx.JSON(http.StatusOK,gin.H{
+		"err":   "ユーザ情報が取得できませんでした。",
+	})
 	}
-
 }

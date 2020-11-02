@@ -1,24 +1,22 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "golang.go",
-    "go.delveConfig": {
-
-        "dlvLoadConfig": {
-            "followPointers": true,
-            "maxVariableRecurse": 1,
-            "maxStringLen": 64,
-            "maxArrayValues": 64,
-            "maxStructFields": -1
-        },
-        "apiVersion": 2,
-        "showGlobalVariables": false
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "golang.go",
+  "go.delveConfig": {
+    "dlvLoadConfig": {
+      "followPointers": true,
+      "maxVariableRecurse": 1,
+      "maxStringLen": 64,
+      "maxArrayValues": 64,
+      "maxStructFields": -1
     },
-    "[go]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": false
-    },
-    "go.formatTool": "gofmt",
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "apiVersion": 2,
+    "showGlobalVariables": false
+  },
+  "[go]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.formatTool": "gofmt",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

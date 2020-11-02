@@ -31,4 +31,10 @@ func Router(r *gin.Engine) {
 	r.POST("/chatPost", ChatPost)
 	r.POST("/doRoomCreate", DoRoomCreate)
 
+	/**
+	* Json形式のデータのみを連携するRest処理
+	*/
+	r.POST("/getLogin",GetLogin)
+	r.GET("/getLogin",GetLogin)
+
 }
