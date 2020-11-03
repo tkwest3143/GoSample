@@ -7,7 +7,6 @@ import (
 	"github/GoSumple/gin_sumple/go/model"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
-	"fmt"
 )
 
 //Login login.htmlのGET処理を実装します
@@ -37,8 +36,6 @@ func DoLogin(ctx *gin.Context) {
 func GetLogin(ctx *gin.Context) {
     username := ctx.Query("username")
 	password := ctx.Query("password")
-fmt.Println(username)
-fmt.Println(password)
 	userinfo := model.DoAuthentication(username,password)
 	
 	err := bcrypt.CompareHashAndPassword([]byte(userinfo.Password), []byte(password))
@@ -49,11 +46,6 @@ fmt.Println(password)
         ctx.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, X-Max")
         ctx.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 	if err == nil {
-		session := sessions.Default(ctx)
-		session.Set("UserId", userinfo.UserID)
-		session.Set("UserName", userinfo.UserName)
-		session.Save()
-		 
 		ctx.JSON(http.StatusOK,userinfo)
 	} else {
 		ctx.JSON(http.StatusOK,gin.H{

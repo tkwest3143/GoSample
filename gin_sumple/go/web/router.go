@@ -36,5 +36,6 @@ func Router(r *gin.Engine) {
 	*/
 	r.POST("/getLogin",GetLogin)
 	r.GET("/getLogin",GetLogin)
+	r.GET("/getUserList",GetUserList)
 
 }
