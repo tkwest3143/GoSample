@@ -8,52 +8,83 @@
   </head>
   <body>
     <form method="post" action="/chatPost" id="form">
-      <div class="main-content">
-        <h1 id="hdrRoom" style="text-align: center">
-          <button id="btnRoomName">{{.roomName}}</button>
-        </h1>
-        <div class="chatList">
+       <div class="container clearfix">
+          <div class="people-list" id="people-list">
+      <div class="search">
+        <input type="text" placeholder="search" />
+        <i class="fa fa-search"></i>
+      </div>
+      <ul class="list">
+        <li class="clearfix">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+          <div class="about">
+            <div class="name">Vincent Porter</div>
+            <div class="status">
+              <i class="fa fa-circle online"></i> online
+            </div>
+          </div>
+        </li>
+         </ul>
+    </div>
+          <div class="chat">
+      <div class="chat-header clearfix">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
+        
+        <div class="chat-about">
+          <div class="chat-with">{{.roomName}}</div>
+          <div class="chat-num-messages">already 1 902 messages</div>
+        </div>
+        <i class="fa fa-star"></i>
+      </div> <!-- end chat-header -->
+          
+        <div class="chatList chat-history">
+          <ul>
           {{$i := .userId}} {{range .chatList}} {{if eq $i .UserID}}
           <!-- 自分が投稿したチャットの内容-->
-          <div class="minePost post">
-            <!--投稿者-->
-            <div class="contributer">{{.Contributer}}</div>
-            <!--投稿文-->
-            <div class="text">{{.ChatText}}</div>
-          </div>
-          <br />
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i>
+                 {{.Contributer}}</span>
+              <span class="message-data-time">{{.BoteDate}}</span>
+            </div>
+            <div class="message my-message">
+              {{.ChatText}}
+            </div>
+          </li>
           {{else}}
           <!-- 自分以外が投稿したチャットの内容-->
-          <div class="otherPost post">
-            <!--投稿者-->
-            <div class="contributer">{{.Contributer}}</div>
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >{{.BoteDate}}</span> &nbsp; &nbsp;
+              <!--投稿者-->
+              <span class="message-data-name" >{{.Contributer}}</span> 
+              <i class="fa fa-circle me"></i>
+            </div>
             <!--投稿文-->
-            <div class="text">{{.ChatText}}</div>
-            <br />
-          </div>
+             <div class="message other-message float-right">
+              {{.ChatText}}
+            </div>
+          </li>
           {{end}} {{end}}
+          </ul>
         </div>
-        <input
-          type="text"
-          name="chatText"
-          placeholder="入力してください"
-          style="width: 90%"
-          required
-        />
-        <button
-          name="btnPost"
-          style="width: 8%"
-          onclick="javascript:btnPostClick()"
-        >
-          投稿
-        </button>
+         <div class="chat-message clearfix">
+        <textarea name="chatText" id="message-to-send" 
+        placeholder ="Type your message" rows="3" required></textarea>
+                
+        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+        <i class="fa fa-file-image-o"></i>
+        
+        <button name="btnPost" onclick="javascript:btnPostClick()">Send</button>
+
+      </div> <!-- end chat-message -->
       </div>
     </form>
-    <!-- ルームを作成するモーダル -->
+    <!-- ルームを作成するモーダル 
     <div id="modal-area">
       <button id="openModal">ルームを作成する</button>
       <form id="formRoomCreate" method="post" action="/doRoomCreate">
-        <section id="modalArea" class="modalArea">
+        <section id="modalArea" class="modalArea hidden">
           <div id="modalBg" class="modalBg"></div>
           <div class="modalWrapper">
             <div class="modalContents">
@@ -69,7 +100,8 @@
                 placeholder="何をするスペースですか？"
               ></textarea>
               <label for="">招待する</label>
-              <!--友達一覧を表示して選択-->
+              友達一覧を表示して選択-->
+    <!--
               <div>
                 {{range .friendList}}
                 <input
@@ -89,7 +121,8 @@
         <input type="hidden" name="selectFriendList" id="selectFriendList" />
       </form>
     </div>
-    <!-- モーダルエリアここまで -->
+     モーダルエリアここまで -->
+    -->
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/chatList.js"></script>

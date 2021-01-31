@@ -12,10 +12,6 @@
     "apiVersion": 2,
     "showGlobalVariables": false
   },
-  "[go]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "go.formatTool": "gofmt",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

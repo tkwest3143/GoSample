@@ -2,8 +2,9 @@
 package web
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 //ReturnLogin lotinError.htmlのGET処理を実装します

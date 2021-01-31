@@ -2,11 +2,12 @@
 package web
 
 import (
+	"github/GoSumple/gin_sumple/go/model"
+	"net/http"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github/GoSumple/gin_sumple/go/model"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
 )
 
 //Login login.htmlのGET処理を実装します
@@ -25,6 +26,7 @@ func DoLogin(ctx *gin.Context) {
 		session := sessions.Default(ctx)
 		session.Set("UserId", userinfo.UserID)
 		session.Set("UserName", userinfo.UserName)
+		session.Set("OpenRoomId", userinfo.OpenRoomID)
 		session.Save()
 		ctx.Redirect(http.StatusSeeOther, "/chatList")
 	} else {
