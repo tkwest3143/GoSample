@@ -51,6 +51,8 @@ body {
   ul {
     padding: 20px;
     height: 770px;
+    padding-left: 0;
+    list-style: none;
 
     li {
       padding-bottom: 20px;
@@ -120,6 +122,11 @@ body {
     border-bottom: 2px solid white;
     overflow-y: scroll;
     height: 575px;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
 
     .message-data {
       margin-bottom: 15px;

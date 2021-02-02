@@ -1,9 +1,11 @@
 package db
 
 import (
-	"github.com/jinzhu/gorm"
 	"github/GoSumple/gin_sumple/go/data"
+
+	"github.com/jinzhu/gorm"
 )
+
 //UserRelationDBInit UserRelationsテーブルの初期化を行います
 func UserRelationDBInit(d *gorm.DB) {
 	if !d.HasTable(&data.UserRelation{}) {
@@ -22,7 +24,7 @@ func UserRelationInsert(insData data.UserRelation) {
 func GetFriendList(userID string) []string {
 	d := GormConnect()
 	selData := []data.UserRelation{}
-	d.Find(&selData, "user_id1=? or user_id2 = ?", userID, userID)
+	d.Find(&selData, "user_id1=?", userID)
 	defer d.Close()
 	friendList := []string{}
 	for _, b := range selData {

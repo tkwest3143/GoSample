@@ -11,14 +11,25 @@
        <div class="container clearfix">
           <div class="people-list" id="people-list">
       <div class="search">
-        <input type="text" placeholder="search" />
+        <input type="text" placeholder="search" id="txt-search"/>
         <i class="fa fa-search"></i>
       </div>
       <ul class="list">
-        <li class="clearfix">
+        <li class="clearfix friend-list">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
           <div class="about">
+            <input type="hidden" class="target-name" value="vincent porter" />
             <div class="name">Vincent Porter</div>
+            <div class="status">
+              <i class="fa fa-circle online"></i> online
+            </div>
+          </div>
+        </li>
+        <li class="clearfix friend-list">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+          <div class="about">
+            <input type="hidden" class="target-name" value="アーロン" />
+            <div class="name">アーロン Porter</div>
             <div class="status">
               <i class="fa fa-circle online"></i> online
             </div>
@@ -41,7 +52,7 @@
           <ul>
           {{$i := .userId}} {{range .chatList}} {{if eq $i .UserID}}
           <!-- 自分が投稿したチャットの内容-->
-          <li>
+          <li class="clearfix">
             <div class="message-data">
               <span class="message-data-name"><i class="fa fa-circle online"></i>
                  {{.Contributer}}</span>
@@ -70,7 +81,7 @@
         </div>
          <div class="chat-message clearfix">
         <textarea name="chatText" id="message-to-send" 
-        placeholder ="Type your message" rows="3" required></textarea>
+        placeholder ="メッセージを入力してください" rows="3"></textarea>
                 
         <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
         <i class="fa fa-file-image-o"></i>
@@ -122,7 +133,6 @@
       </form>
     </div>
      モーダルエリアここまで -->
-    -->
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/chatList.js"></script>

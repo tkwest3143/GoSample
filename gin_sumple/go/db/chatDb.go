@@ -1,8 +1,9 @@
 package db
 
 import (
-	"github.com/jinzhu/gorm"
 	"github/GoSumple/gin_sumple/go/data"
+
+	"github.com/jinzhu/gorm"
 )
 
 //ChatDBInit chatsテーブルの初期化を行います
@@ -23,7 +24,7 @@ func ChatInsert(insData data.Chat) {
 func ChatSelect(roomID string) []data.Chat {
 	d := GormConnect()
 	selData := []data.Chat{}
-	d.Find(&selData, "room_id = ?", roomID)
+	d.Order("bote_date desc").Find(&selData, "room_id = ?", roomID)
 	defer d.Close()
 	return selData
 }

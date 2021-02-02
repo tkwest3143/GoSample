@@ -15,7 +15,7 @@ func GetChatList(roomID string) []data.ChatList {
 		"t1.chat_text,t2.user_id,t2.user_name as contributer,t1.bote_date,"+
 		"t1.room_id from chats t1 "+
 		"inner join users t2 on t1.contributer = t2.user_id "+
-		"where t1.room_id = ? ", roomID).Scan(&selData)
+		"where t1.room_id = ? order by t1.bote_date", roomID).Scan(&selData)
 	defer d.Close()
 	return selData
 }
