@@ -9,6 +9,13 @@ function hankaku2Zenkaku(str) {
   });
 }
 $(function () {
+  //画面読み込み時イベント
+  $(document).ready(function () {
+    //チャットリストを最下部に設定する
+    $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
+  });
+
+  //フレンドビュー検索欄フォーカスアウト時
   $("#txt-search").blur(function () {
     // 変数の宣言
     let searchResult, targetText;
@@ -26,7 +33,7 @@ $(function () {
             // 検索対象となるリストに入力された文字列が存在するかどうかを判断
             if (targetText.indexOf(searchtxt) !== -1) {
               // 存在する場合はそのリストのテキストを用意した配列に格納
-              searchResult.push(targetText);
+              //searchResult.push(targetText);
               isShow = true;
             }
           });

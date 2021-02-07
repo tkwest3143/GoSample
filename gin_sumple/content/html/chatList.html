@@ -15,26 +15,19 @@
         <i class="fa fa-search"></i>
       </div>
       <ul class="list">
+        {{range .friendList}}
         <li class="clearfix friend-list">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
           <div class="about">
-            <input type="hidden" class="target-name" value="vincent porter" />
-            <div class="name">Vincent Porter</div>
+            <input type="hidden" class="target-name" value={{.UserNameSearch}} />
+            <div class="name">{{.UserName}}</div>
             <div class="status">
               <i class="fa fa-circle online"></i> online
             </div>
           </div>
         </li>
-        <li class="clearfix friend-list">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-          <div class="about">
-            <input type="hidden" class="target-name" value="アーロン" />
-            <div class="name">アーロン Porter</div>
-            <div class="status">
-              <i class="fa fa-circle online"></i> online
-            </div>
-          </div>
-        </li>
+         {{end}}
+        
          </ul>
     </div>
           <div class="chat">
@@ -54,9 +47,9 @@
           <!-- 自分が投稿したチャットの内容-->
           <li class="clearfix">
             <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i>
-                 {{.Contributer}}</span>
-              <span class="message-data-time">{{.BoteDate}}</span>
+              <!-- <span class="message-data-name"><i class="fa fa-circle online"></i>
+                 {{.Contributer}}</span> -->
+              <span class="message-data-time">{{.BoteDate.Hour}}:{{.BoteDate.Minute}}</span>
             </div>
             <div class="message my-message">
               {{.ChatText}}
@@ -66,7 +59,7 @@
           <!-- 自分以外が投稿したチャットの内容-->
           <li class="clearfix">
             <div class="message-data align-right">
-              <span class="message-data-time" >{{.BoteDate}}</span> &nbsp; &nbsp;
+              <span class="message-data-time" >{{.BoteDate.Hour}}:{{.BoteDate.Minute}}</span> &nbsp; &nbsp;
               <!--投稿者-->
               <span class="message-data-name" >{{.Contributer}}</span> 
               <i class="fa fa-circle me"></i>

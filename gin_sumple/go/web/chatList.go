@@ -25,11 +25,8 @@ func ChatList(ctx *gin.Context) {
 
 	//ルームIDよりルーム情報を取得
 	roomInfo := db.RoomSelect(roomID)
-	friendIDList := db.GetFriendList(userID)
-	friendList := []data.User{}
-	for _, friend := range friendIDList {
-		friendList = append(friendList, db.UserSelect(friend))
-	}
+	friendList := []data.UserListData{}
+	friendList=model.GetUserFriendList(userID)
 	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
 		"chatList":   chatList,
 		"userName":   username,
