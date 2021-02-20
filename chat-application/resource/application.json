@@ -1,0 +1,17 @@
+{
+    "application_mode":1,
+
+    "dbconfig":{
+        "DBMS":"postgres",
+        "USER":"USER",
+        "PASSWORD":"password",
+        "PROTOCOL":"localhost:5432",
+        "DBNAME":"GODB"
+    },
+
+    "logPath":{
+        "directory":"C://gin_sample/log",
+        "info":"C://gin_sample/log/infoLog.log",
+        "error":"C://gin_sample/log/errorLog.log"
+    }
+}
