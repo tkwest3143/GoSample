@@ -3,18 +3,40 @@ import { EventEmitter } from "events";
 class UserStore extends EventEmitter {
   constructor() {
     super();
-    this.user = [];
+    this.user = new Array();
+    this.error = new Array();
+    this.loginFlg = 0;
+    this.userid;
   }
-  setUsername(username) {
+  setUser(username, userId) {
     this.user.push({
+      userId,
       username,
+    });
+    this.userid = userId;
+    this.loginFlg = 1;
+
+    this.emit("change");
+  }
+  setError(err) {
+    this.error.push({
+      err,
     });
 
     this.emit("change");
   }
 
-  getUsername() {
+  getUser() {
     return this.user;
+  }
+  getLoginFlg() {
+    return this.loginFlg;
+  }
+  getUserId() {
+    return this.userid;
+  }
+  getError() {
+    return this.error;
   }
 }
 

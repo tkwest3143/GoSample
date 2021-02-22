@@ -1,17 +1,33 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "golang.go",
-  "go.delveConfig": {
-    "dlvLoadConfig": {
-      "followPointers": true,
-      "maxVariableRecurse": 1,
-      "maxStringLen": 64,
-      "maxArrayValues": 64,
-      "maxStructFields": -1
+ "go.formatTool": "gofmt",
+"go.lintOnSave": "off",
+"go.lintTool": "golangci-lint",
+"go.useLanguageServer": true,
+"[go]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false
     },
-    "apiVersion": 2,
-    "showGlobalVariables": false
-  },
+    // Optional: Disable snippets, as they conflict with completion ranking.
+    "editor.snippetSuggestions": "none"
+},
+"[go.mod]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+},
+"go.languageServerExperimentalFeatures": {
+    "format": false,
+    "autoComplete": true
+},
+"gopls": {
+    // Add parameter placeholders when completing a function.
+    "usePlaceholders": true,
+    // If true, enable additional analyses with staticcheck.
+    // Warning: This will significantly increase memory usage.
+    "staticcheck": false
+},
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

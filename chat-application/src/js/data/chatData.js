@@ -5,7 +5,7 @@ class ChatStore extends EventEmitter {
     super();
     this.chats = [];
   }
-  createChat(text, name, date) {
+  createChat(text, name, date, myBoteFlg) {
     const id = Date.now();
 
     this.chats.push({
@@ -13,6 +13,7 @@ class ChatStore extends EventEmitter {
       text,
       name,
       date,
+      myBoteFlg,
     });
 
     this.emit("change");

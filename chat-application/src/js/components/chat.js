@@ -1,31 +1,34 @@
 import React from "react";
 import ChatStore from "../data/chatData";
+import UserStore from "../data/user";
 
 export default class Chat extends React.Component {
   constructor() {
     super();
     this.state = {
       chats: ChatStore.getAll(),
+      user: UserStore.getUser(),
     };
     var xhr = new XMLHttpRequest();
 
     xhr.open("GET", "/chatList");
     xhr.send();
+    const { user } = this.state;
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         //チャットデータをそれぞれのdataに格納し、画面表示用のチャットデータに格納する
-
         var data = JSON.parse(xhr.responseText);
-        console.log(this.chats);
         var text = "";
         var name = "";
         var date = "";
-
+        var myBoteFlg = false;
         for (let i = 0; i < data.chatList.length; i++) {
           text = data.chatList[i].ChatText;
           name = data.chatList[i].Contributer;
           date = data.chatList[i].BoteDateDisp;
-          ChatStore.createChat(text, name, date);
+          console.log(data.userId + "=" + data.chatList[i].UserID);
+          myBoteFlg = data.userId == data.chatList[i].UserID;
+          ChatStore.createChat(text, name, date, myBoteFlg);
         }
       }
     };
@@ -44,6 +47,28 @@ export default class Chat extends React.Component {
   //チャット投稿イベント
   chatSend() {
     const text = document.getElementById("chat_text").value;
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "/chatList");
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        //チャットデータをそれぞれのdataに格納し、画面表示用のチャットデータに格納する
+        var data = JSON.parse(xhr.responseText);
+        var text = "";
+        var name = "";
+        var date = "";
+        var myBoteFlg = false;
+        for (let i = 0; i < data.chatList.length; i++) {
+          text = data.chatList[i].ChatText;
+          name = data.chatList[i].Contributer;
+          date = data.chatList[i].BoteDateDisp;
+          myBoteFlg = data.userId == data.chatList[i].Contributer;
+          ChatStore.createChat(text, name, date, myBoteFlg);
+        }
+      }
+    };
     document.getElementById("chat_text").value = "";
   }
 
@@ -51,7 +76,7 @@ export default class Chat extends React.Component {
     const { chats } = this.state;
     const ChatComponents = chats.map((chat) => {
       //チャットの投稿の画面を作成する
-      if (chat.name == "aaa") {
+      if (chat.myBoteFlg) {
         //ログインユーザが投稿したチャット
         return (
           <li class="clearfix">
