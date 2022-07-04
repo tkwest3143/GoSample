@@ -8,7 +8,7 @@
     "DBNAME": "GODB"
   },
   "logPath": {
-    "directory": "",
+    "directory": "log",
     "info": "infoLog.log",
     "error": "errorLog.log"
   }

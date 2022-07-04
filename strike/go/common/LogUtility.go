@@ -39,12 +39,13 @@ func LogCreate() io.Writer {
 		err = os.Mkdir(appData.LogPath.Directory, 0777)
 		fmt.Println(err)
 	}
-	infoFile, err := os.OpenFile(appData.LogPath.Info, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	infoPath := appData.LogPath.Directory + "/" + appData.LogPath.Info
+	infoFile, err := os.OpenFile(infoPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("ログファイルがありませんでした。新たに作成します。")
-		infoFile, err = os.Create(appData.LogPath.Info)
+		infoFile, err = os.Create(infoPath)
 		if err != nil {
 			fmt.Println("ログファイルが作成できませんでした")
 			fmt.Println(err)
