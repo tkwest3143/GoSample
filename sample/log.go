@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github/gin-gonic/gin"
+	"gin-gonic/gin"
 	)
 
 func main() {

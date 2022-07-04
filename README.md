@@ -5,7 +5,7 @@ Go言語の練習用プロジェクト
 
 - このプロジェクトを実行するには下記の配下に配置してください。
 
-  - {Go インストールフォルダ}/src/github/
+  - {Go インストールフォルダ}/src/
 
 - Go のインストールは、Go 公式の Web サイトまたはこちらを参考にしてください
   - https://nbaboston.net/1405.html
@@ -31,13 +31,13 @@ Go 言語の Web フレームワークである Gin フレームワークのた�
 
 <h3>----フォルダ説明----</h3>
 
-- github/GoSumple/gin_sumple/go/common
+- strike/go/common
 
   - 共通的なパッケージ
 
     application.json からプロパティを取得する処理、ログファイルを出力する処理等を実装
 
-- github/GoSumple/gin_sumple/go/db
+- strike/go/db
 
   - データベース関連のパッケージ
 
@@ -46,13 +46,13 @@ Go 言語の Web フレームワークである Gin フレームワークのた�
   - ※/main/DBCreate.go は DB 作成用 Go ファイルです。
   - gin_sumple\bat\DBCreate.bat を実行することで DB が作成されます。
 
-- github/GoSumple/gin_sumple/go/web
+- strike/go/web
   - Web アプリでの各画面の GET、POST 処理を実装するパッケージ
-- github/GoSumple/gin_sumple/go/model
+- strike/go/model
 
   - 複数テーブルからデータ取得等の操作を実装するパッケージ
 
-- github/GoSumple/gin_sumple/content
+- ./content
   - Web の画面処理をまとめ
 
 <h3>----実行方法----</h3>

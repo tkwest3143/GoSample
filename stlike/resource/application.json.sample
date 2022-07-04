@@ -1,0 +1,15 @@
+{
+  "application_mode": 1,
+  "dbconfig": {
+    "DBMS": "",
+    "USER": "",
+    "PASSWORD": "",
+    "PROTOCOL": "",
+    "DBNAME": "GODB"
+  },
+  "logPath": {
+    "directory": "",
+    "info": "infoLog.log",
+    "error": "errorLog.log"
+  }
+}
