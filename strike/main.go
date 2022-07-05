@@ -12,6 +12,11 @@ func main() {
 	//出力するログの設定
 	writer := common.LogCreate()
 	gin.DefaultWriter = writer
+	appData := common.GetApplicationProperty()
+	port := appData.ApplicationPort
+	if len(port) == 0 {
+		port = "8080"
+	}
 
 	r.LoadHTMLGlob("content/html/*")
 
@@ -21,6 +26,6 @@ func main() {
 
 	web.Router(r)
 
-	r.Run(":8080")
+	r.Run(":" + port)
 
 }
