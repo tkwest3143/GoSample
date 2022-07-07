@@ -1,6 +1,7 @@
 {
   "application_mode": 1,
   "client_url":""
+  "application_port":"8080",
   "dbconfig": {
     "DBMS": "",
     "USER": "",
