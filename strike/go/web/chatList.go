@@ -2,10 +2,10 @@
 package web
 
 import (
+	"net/http"
 	"strike/go/data"
 	"strike/go/db"
 	"strike/go/model"
-	"net/http"
 	"strings"
 	"time"
 
@@ -26,8 +26,8 @@ func ChatList(ctx *gin.Context) {
 	//ルームIDよりルーム情報を取得
 	roomInfo := db.RoomSelect(roomID)
 	friendList := []data.UserListData{}
-	friendList=model.GetUserFriendList(userID)
-	ctx.HTML(http.StatusOK, "chatList.html", gin.H{
+	friendList = model.GetUserFriendList(userID)
+	ctx.JSON(http.StatusOK, gin.H{
 		"chatList":   chatList,
 		"userName":   username,
 		"userId":     userID,
@@ -49,7 +49,9 @@ func ChatPost(ctx *gin.Context) {
 	chat.RoomID = roomid
 	db.ChatInsert(chat)
 
-	ctx.Redirect(http.StatusSeeOther, "/chatList")
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "ok",
+	})
 }
 
 //DoRoomCreate ルームを作成する処理を実装します。
@@ -83,6 +85,8 @@ func DoRoomCreate(ctx *gin.Context) {
 	//ルームを開くようセッションに登録
 	session.Set("OpenRoomId", roomID)
 	session.Save()
-	ctx.Redirect(http.StatusSeeOther, "/chatList")
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "ok",
+	})
 
 }

@@ -12,6 +12,7 @@ type Dbconfig struct {
 // AppData アプリケーション情報
 type AppData struct {
 	ApplicationMode int      `json:"application_mode"`
+	CLIENT_URL      string   `json:"client_url"`
 	DbConfig        Dbconfig `json:"dbconfig"`
 	LogPath         LogPath  `json:"logPath"`
 }

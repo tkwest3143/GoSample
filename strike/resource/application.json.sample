@@ -1,5 +1,6 @@
 {
   "application_mode": 1,
+  "client_url":""
   "dbconfig": {
     "DBMS": "",
     "USER": "",

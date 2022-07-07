@@ -12,30 +12,18 @@ func Router(r *gin.Engine) {
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
 
-	//index.htmlのGET、POST処理
-	r.GET("/", Index)
-
-	//login.htmlのGET、POST処理
-	r.GET("/login", Login)
+	//loginのPOST処理
 	r.POST("/doLogin", DoLogin)
 
-	//regist.htmlのGET、POST処理
-	r.GET("/regist", Regist)
-	r.POST("/doRegist", DoRegist)
-
-	//loginError.htmlのGET、POST処理
-	r.POST("/returnLogin", ReturnLogin)
+	//registerのPOST処理
+	r.POST("/doRegister", DoRegister)
 
 	//chatList.htmlのGET、POST処理
 	r.GET("/chatList", ChatList)
 	r.POST("/chatPost", ChatPost)
 	r.POST("/doRoomCreate", DoRoomCreate)
+	r.POST("/upload", Upload)
 
-	/**
-	* Json形式のデータのみを連携するRest処理
-	*/
-	r.POST("/getLogin",GetLogin)
-	r.GET("/getLogin",GetLogin)
-	r.GET("/getUserList",GetUserList)
+	r.GET("/getUserList", GetUserList)
 
 }
