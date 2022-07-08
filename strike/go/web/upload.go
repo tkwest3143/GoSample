@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"strike/go/common"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,14 +15,16 @@ import (
 func Upload(ctx *gin.Context) {
 	// マルチパートフォーム
 	form, _ := ctx.MultipartForm()
-	files := form.File["upload[]"]
-
+	log.Println(form)
+	files := form.File["upload"]
+	log.Println(files)
 	for _, file := range files {
+		appData := common.GetApplicationProperty()
 		log.Println(file.Filename)
 		filename := filepath.Base(file.Filename)
 
 		// 特定のディレクトリにファイルをアップロードする
-		ctx.SaveUploadedFile(file, filename)
+		ctx.SaveUploadedFile(file, appData.UPLOAD_DIRECTORY+"/"+filename)
 	}
 	ctx.String(http.StatusOK, fmt.Sprintf("%d files uploaded!", len(files)))
 }

@@ -16,6 +16,7 @@ func main() {
 		// アクセスを許可したいアクセス元
 		AllowOrigins: []string{
 			appData.CLIENT_URL,
+			"http://192.168.50.251:3000",
 		},
 		// アクセスを許可したいHTTPメソッド(以下の例だとPUTやDELETEはアクセスできません)
 		AllowMethods: []string{
@@ -39,8 +40,7 @@ func main() {
 	//出力するログの設定
 	writer := common.LogCreate()
 	gin.DefaultWriter = writer
-	appData := common.GetApplicationProperty()
-	port := appData.ApplicationPort
+	port := common.GetApplicationProperty().ApplicationPort
 	if len(port) == 0 {
 		port = "8080"
 	}

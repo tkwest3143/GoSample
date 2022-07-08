@@ -23,7 +23,10 @@ func DoLogin(ctx *gin.Context) {
 			session.Set("OpenRoomId", userinfo.OpenRoomID)
 			session.Save()
 			ctx.JSON(http.StatusOK, gin.H{
-				"status": "ok",
+				"user_id":  userinfo.UserID,
+				"username": userinfo.UserName,
+				"email":    userinfo.MailAddress,
+				"password": userinfo.Password,
 			})
 		} else {
 			ctx.JSON(http.StatusInternalServerError, gin.H{

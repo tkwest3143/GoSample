@@ -11,11 +11,12 @@ type Dbconfig struct {
 
 // AppData アプリケーション情報
 type AppData struct {
-	ApplicationMode int      `json:"application_mode"`
-	CLIENT_URL      string   `json:"client_url"`
-	ApplicationPort string   `json:"application_port"`
-	DbConfig        Dbconfig `json:"dbconfig"`
-	LogPath         LogPath  `json:"logPath"`
+	ApplicationMode  int      `json:"application_mode"`
+	CLIENT_URL       string   `json:"client_url"`
+	UPLOAD_DIRECTORY string   `json:"upload_directory"`
+	ApplicationPort  string   `json:"application_port"`
+	DbConfig         Dbconfig `json:"dbconfig"`
+	LogPath          LogPath  `json:"logPath"`
 }
 
 // LogPath ログファイルパス

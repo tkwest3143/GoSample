@@ -1,6 +1,7 @@
 {
   "application_mode": 1,
   "client_url":""
+  "upload-directory":"",
   "application_port":"8080",
   "dbconfig": {
     "DBMS": "",
