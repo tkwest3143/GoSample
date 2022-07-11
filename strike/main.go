@@ -14,10 +14,7 @@ func main() {
 	appData := common.GetApplicationProperty()
 	r.Use(cors.New(cors.Config{
 		// アクセスを許可したいアクセス元
-		AllowOrigins: []string{
-			appData.CLIENT_URL,
-			"http://192.168.50.251:3000",
-		},
+		AllowOrigins: appData.ALLOW_IP,
 		// アクセスを許可したいHTTPメソッド(以下の例だとPUTやDELETEはアクセスできません)
 		AllowMethods: []string{
 			"POST",
