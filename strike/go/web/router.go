@@ -26,4 +26,6 @@ func Router(r *gin.Engine) {
 
 	r.GET("/getUserList", GetUserList)
 
+	r.GET("/getNewsList", GetNewsList)
+
 }

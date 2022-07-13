@@ -1,8 +1,9 @@
 package data
 
 import (
-	"github.com/jinzhu/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 //Chat Chatsテーブルエンティティ情報

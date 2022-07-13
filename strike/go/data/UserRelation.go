@@ -1,7 +1,7 @@
 package data
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 //UserRelation UserRelationsテーブル情報

@@ -3,6 +3,7 @@ module strike
 go 1.15
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.0 // indirect
 	github.com/gin-contrib/cors v1.4.0 // indirect
 	github.com/gin-contrib/sessions v0.0.3
 	github.com/gin-gonic/gin v1.8.1

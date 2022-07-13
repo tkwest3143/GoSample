@@ -2,7 +2,9 @@
 package web
 
 import (
+	"fmt"
 	"net/http"
+
 	"strike/go/data"
 	"strike/go/model"
 
@@ -12,6 +14,8 @@ import (
 
 //DoLogin POST処理（/doLogin）を実装します
 func DoLogin(ctx *gin.Context) {
+	xml_data, err := model.ReadXmlFromHttp("https://news.yahoo.co.jp/rss/topics/it.xml")
+	fmt.Println(xml_data, err)
 	var loginData data.DoLoginData
 	if ctx.ShouldBind(&loginData) == nil {
 		userinfo := model.DoAuthentication(loginData.Username, loginData.Password)
