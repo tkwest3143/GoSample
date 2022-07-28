@@ -17,10 +17,10 @@ func DoRegister(ctx *gin.Context) {
 	var registerData data.DoRegisterData
 	if ctx.ShouldBind(&registerData) == nil {
 		registuser := db.UserSelectByUserName(registerData.Username)
-		if registuser.UserID == "" {
+		if registuser.ID == "" {
 			userid := db.GetMaxUsersID()
 			userinfo := data.User{}
-			userinfo.UserID = userid
+			userinfo.ID = userid
 			userinfo.UserName = registerData.Username
 			userinfo.Password = common.DoCrypt(registerData.Password)
 			userinfo.MailAddress = registerData.MarilAddress
@@ -39,7 +39,7 @@ func DoRegister(ctx *gin.Context) {
 			roomUserRelation.UserID = userid
 			roomUserRelation.AuthorityCd = '1'
 			session := sessions.Default(ctx)
-			session.Set("UserId", userinfo.UserID)
+			session.Set("UserId", userinfo.ID)
 			session.Set("UserName", userinfo.UserName)
 			session.Set("OpenRoomId", userinfo.OpenRoomID)
 			session.Save()
@@ -50,9 +50,13 @@ func DoRegister(ctx *gin.Context) {
 
 		} else {
 			ctx.JSON(http.StatusInternalServerError, gin.H{
-				"message": "login error",
+				"message": "すでに登録されています",
 			})
 		}
+	} else {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"message": "予期せぬエラー",
+		})
 	}
 
 }

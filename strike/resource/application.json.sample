@@ -8,7 +8,7 @@
     "USER": "",
     "PASSWORD": "",
     "PROTOCOL": "",
-    "DBNAME": "GODB"
+    "DBNAME": "strike.db"
   },
   "logPath": {
     "directory": "log",

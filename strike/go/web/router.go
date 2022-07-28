@@ -26,6 +26,13 @@ func Router(r *gin.Engine) {
 
 	r.GET("/getUserList", GetUserList)
 
-	r.GET("/getNewsList", GetNewsList)
+	r.POST("/getNewsList", GetNewsByUser)
 
+	r.POST("/getNewsByCategory", GetNewsByCategory)
+	r.POST("/getNewsCategory", GetNewsCategory)
+	r.POST("/registerFavoriteCategory", GetNewsCategory)
+
+	r.POST("/registerWotkTimeOfDay", RegisterWotkTimeOfDay)
+	r.POST("/getWotkTimeByUser", GetNewsByUser)
+	r.POST("/registerWorkTimeSetting", RegisterWorkTimeSetting)
 }

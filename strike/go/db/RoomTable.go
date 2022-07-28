@@ -9,7 +9,7 @@ import (
 
 //RoomInit Roomsテーブルの初期化を行います
 func RoomInit(d *gorm.DB) {
-	d.Migrator().CreateTable(&data.Room{})
+	d.AutoMigrate(&data.Room{})
 }
 
 //RoomInsert users情報を挿入します

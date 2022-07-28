@@ -22,7 +22,7 @@ func UserInsert(insData data.User) {
 func UserSelect(userID string) data.User {
 	d := GormConnect()
 	selData := data.User{}
-	d.First(&selData, "user_id=?", userID)
+	d.First(&selData, "id=?", userID)
 	return selData
 }
 

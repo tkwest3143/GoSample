@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"io"
 	"net/http"
+	"strike/go/db"
 	"time"
 )
 
@@ -26,7 +27,32 @@ type NewsData struct {
 	Description string `json:"description"`
 }
 
-func ReadXmlFromHttp(url string) ([]NewsData, error) {
+type NewsCategory struct {
+	ID       string `json:"category_id"`
+	Title    string `json:"title"`
+	FileName string `json:"file_name"`
+}
+
+func GetAllNewsCategoryData() ([]NewsCategory, error) {
+	newsData := db.NewsMasterSelectAll()
+	NewsCategoryList := []NewsCategory{}
+	for _, item := range newsData {
+		NewsCategoryList = append(NewsCategoryList, NewsCategory{Title: item.Title, ID: item.ID, FileName: item.FileName})
+	}
+	return NewsCategoryList, nil
+}
+
+func GetNewsListByUser(userId string) ([]NewsData, error) {
+	category := db.NewsMasterSelectById(userId)
+	return readXmlFromHttp("https://news.yahoo.co.jp/rss/categories/" + category.FileName)
+}
+
+func GetNewsListByCategory(categoryId string) ([]NewsData, error) {
+	category := db.NewsMasterSelectById(categoryId)
+	return readXmlFromHttp("https://news.yahoo.co.jp/rss/categories/" + category.FileName)
+}
+
+func readXmlFromHttp(url string) ([]NewsData, error) {
 	data, err := getXmlForHttp(url)
 	if err != nil {
 		return []NewsData{}, err
